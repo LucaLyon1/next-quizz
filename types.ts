@@ -9,5 +9,6 @@ export type quiz = {
 export type question = {
     id: number,
     title: string,
+    answers: Array<string>,
     answer: string,
 }
