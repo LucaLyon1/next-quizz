@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --dark-theme: #0c120c;
+    --main-color: #14CC60;
+    --active-color: #27FB6B;
+    --danger-color: #C20114;
+}
+
+body {
+    background-color: var(--dark-theme);
+    color: white;
+}
