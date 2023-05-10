@@ -12,3 +12,8 @@ export type question = {
     answers: Array<string>,
     answer: string,
 }
+
+export type userAnswer = {
+    question: question,
+    value: string,
+}
