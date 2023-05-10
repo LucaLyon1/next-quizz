@@ -14,6 +14,6 @@ export type question = {
 }
 
 export type userAnswer = {
-    question: question,
+    question: string,
     value: string,
 }

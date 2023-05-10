@@ -2,15 +2,28 @@
 
 import { mapAnswersRandomly } from "@/lib/functions";
 import { quiz, userAnswer } from "@/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Quiz(props: { quiz: quiz }) {
     const quiz = props.quiz
     const [userAns, setUserAns] = useState<userAnswer[]>([])
 
+    useEffect(() => {
+        console.log(userAns)
+    }, [userAns])
 
-    const handleAnswer = (e: React.MouseEvent) => {
-        console.log(e)
+    const handleAnswer = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let ansArr = userAns
+        let id = ansArr.findIndex((a) => a.question == e.target.name)
+        let ans: userAnswer
+        console.log(id)
+        if (id === -1) {
+            ans = { question: e.target.name, value: e.target.value }
+        } else {
+            ans = ansArr.splice(id, 1)[0]
+            ans.value = e.target.value
+        }
+        setUserAns([...ansArr, ans])
     }
     return (
         <form className="w-full">
@@ -20,7 +33,7 @@ export default function Quiz(props: { quiz: quiz }) {
                     <div className="flex flex-row gap-8 justify-center my-8">
                         {q.answers.map((a, j) => (
                             <div key={j + (4 * i)}>
-                                <input onClick={handleAnswer} type="radio" id={a} name={q.title} value={a} />
+                                <input onChange={handleAnswer} type="radio" id={a} name={q.title} value={a} />
                                 <label htmlFor={a}>{a}</label>
                             </div>
                         ))}
