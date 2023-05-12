@@ -7,3 +7,17 @@ export function mapAnswersRandomly(answers: Array<string>): Array<string> {
     }
     return shuffled
 }
+
+export const getHello = async () => {
+    try {
+        const res = await fetch('http://localhost:3000/api/hello', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        return res
+    } catch (err) {
+        console.log(err)
+    }
+}

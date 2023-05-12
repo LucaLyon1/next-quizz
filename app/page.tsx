@@ -1,6 +1,11 @@
+import { getHello } from "@/lib/functions";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const hello = await getHello()
+  const data = await hello?.json()
+  const message = data.message
+
   return (
     <main>
       <div className="my-16 w-1/3 m-auto">

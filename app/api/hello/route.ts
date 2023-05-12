@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 export async function GET(req) {
-  return new Response ('Hello, Next.js')
+  return NextResponse.json({ message: 'Hello world ?' })
 }
