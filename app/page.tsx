@@ -1,10 +1,7 @@
-import { getHello } from "@/lib/functions";
 import Link from "next/link";
 
 export default async function Home() {
-  const hello = await getHello()
-  const data = await hello?.json()
-  const message = data.message
+
 
   return (
     <main>

@@ -8,7 +8,7 @@ export function mapAnswersRandomly(answers: Array<string>): Array<string> {
     return shuffled
 }
 
-export const getHello = async () => {
+export const getResult = async () => {
     try {
         const res = await fetch('http://localhost:3000/api/hello', {
             method: 'GET',

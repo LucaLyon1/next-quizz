@@ -1,16 +1,12 @@
 'use client';
 
-import { mapAnswersRandomly } from "@/lib/functions";
+import { getResult, mapAnswersRandomly } from "@/lib/functions";
 import { quiz, userAnswer } from "@/types";
 import { useEffect, useState } from "react";
 
 export default function Quiz(props: { quiz: quiz }) {
     const quiz = props.quiz
     const [userAns, setUserAns] = useState<userAnswer[]>([])
-
-    useEffect(() => {
-        console.log(userAns)
-    }, [userAns])
 
     const handleAnswer = (e: React.ChangeEvent<HTMLInputElement>) => {
         let ansArr = userAns
@@ -25,8 +21,15 @@ export default function Quiz(props: { quiz: quiz }) {
         }
         setUserAns([...ansArr, ans])
     }
+
+    const submitQuiz = async () => {
+        const res = await getResult()
+        const json = await res?.json()
+        const result = json.result
+    }
+
     return (
-        <form className="w-full">
+        <form className="w-full" action={submitQuiz}>
             {quiz.questions.map((q, i) => (
                 <div key={i} className="bg-slate-700 py-1 my-4 w-3/4 m-auto rounded-lg">
                     <h2>{q.title}</h2>

@@ -8,7 +8,7 @@ function Header() {
             </h1>
             <nav className="flex flex-row gap-8">
                 <Link href='/'>Home</Link>
-                <Link href='/'>Log In</Link>
+                <Link href='/auth/login'>Log In</Link>
                 <Link href='/'>Sign In</Link>
             </nav>
         </header>
